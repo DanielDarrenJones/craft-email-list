@@ -37,7 +37,7 @@ class Email extends Model
      *
      * @var string
      */
-    public $someAttribute = 'Some Default';
+    public $email = '';
 
     // Public Methods
     // =========================================================================
@@ -55,8 +55,7 @@ class Email extends Model
     public function rules()
     {
         return [
-            ['someAttribute', 'string'],
-            ['someAttribute', 'default', 'value' => 'Some Default'],
+            ['email', 'string'],
         ];
     }
 }

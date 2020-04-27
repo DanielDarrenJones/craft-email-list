@@ -108,9 +108,7 @@ class Install extends Migration
                     'dateCreated' => $this->dateTime()->notNull(),
                     'dateUpdated' => $this->dateTime()->notNull(),
                     'uid' => $this->uid(),
-                // Custom columns in the table
-                    'siteId' => $this->integer()->notNull(),
-                    'some_field' => $this->string(255)->notNull()->defaultValue(''),
+                    'email' => $this->string(255)->notNull()->defaultValue(''),
                 ]
             );
         }
@@ -129,11 +127,11 @@ class Install extends Migration
         $this->createIndex(
             $this->db->getIndexName(
                 '{{%emaillist_email}}',
-                'some_field',
+                'email',
                 true
             ),
             '{{%emaillist_email}}',
-            'some_field',
+            'email',
             true
         );
         // Additional commands depending on the db driver
@@ -152,16 +150,6 @@ class Install extends Migration
      */
     protected function addForeignKeys()
     {
-    // emaillist_email table
-        $this->addForeignKey(
-            $this->db->getForeignKeyName('{{%emaillist_email}}', 'siteId'),
-            '{{%emaillist_email}}',
-            'siteId',
-            '{{%sites}}',
-            'id',
-            'CASCADE',
-            'CASCADE'
-        );
     }
 
     /**
