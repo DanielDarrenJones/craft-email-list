@@ -16,7 +16,13 @@ use Craft;
 use craft\base\Plugin;
 use craft\services\Plugins;
 use craft\events\PluginEvent;
-
+use craft\events\RegisterUrlRulesEvent;
+use craft\web\UrlManager;
+use craft\web\twig\variables\Cp;
+use craft\web\View;
+use craft\events\RegisterTemplateRootsEvent;
+use craft\events\RegisterCpNavItemsEvent;
+use lukehopkins\emaillist\controllers\ListController;
 use yii\base\Event;
 
 /**
@@ -70,7 +76,11 @@ class EmailList extends Plugin
      *
      * @var bool
      */
-    public $hasCpSection = false;
+    public $hasCpSection = true;
+
+    public $controllerMap = [
+        'list' => ListController::class,
+    ];
 
     // Public Methods
     // =========================================================================
@@ -102,6 +112,15 @@ class EmailList extends Plugin
             }
         );
 
+        Event::on(UrlManager::class, UrlManager::EVENT_REGISTER_SITE_URL_RULES, function(RegisterUrlRulesEvent $event) {
+            $event->rules['email-list/save'] = 'email-list/list/save';
+        });
+
+        Event::on(UrlManager::class, UrlManager::EVENT_REGISTER_CP_URL_RULES, function(RegisterUrlRulesEvent $event) {
+            $event->rules['email-list/list'] = 'email-list/list/index';
+        });
+
+
 /**
  * Logging in Craft involves using one of the following methods:
  *
@@ -128,6 +147,13 @@ class EmailList extends Plugin
             ),
             __METHOD__
         );
+    }
+
+    public function getCpNavItem()
+    {
+        $navItem = parent::getCpNavItem();
+        $navItem['url'] = 'email-list/list';
+        return $navItem;
     }
 
     // Protected Methods

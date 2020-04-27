@@ -109,6 +109,8 @@ class Install extends Migration
                     'dateUpdated' => $this->dateTime()->notNull(),
                     'uid' => $this->uid(),
                     'email' => $this->string(255)->notNull()->defaultValue(''),
+                    'product_name' => $this->string(255)->notNull()->defaultValue(''),
+                    'download_file' => $this->string(255)->notNull()->defaultValue(''),
                 ]
             );
         }
@@ -123,24 +125,7 @@ class Install extends Migration
      */
     protected function createIndexes()
     {
-    // emaillist_email table
-        $this->createIndex(
-            $this->db->getIndexName(
-                '{{%emaillist_email}}',
-                'email',
-                true
-            ),
-            '{{%emaillist_email}}',
-            'email',
-            true
-        );
-        // Additional commands depending on the db driver
-        switch ($this->driver) {
-            case DbConfig::DRIVER_MYSQL:
-                break;
-            case DbConfig::DRIVER_PGSQL:
-                break;
-        }
+
     }
 
     /**

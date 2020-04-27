@@ -14,6 +14,7 @@ use lukehopkins\emaillist\EmailList;
 
 use Craft;
 use craft\base\Component;
+use lukehopkins\emaillist\records\Email as EmailRecord;
 
 /**
  * Email Service
@@ -43,10 +44,20 @@ class Email extends Component
      *
      * @return mixed
      */
-    public function exampleService()
-    {
-        $result = 'something';
 
-        return $result;
+
+    public function getEmails()
+    {
+        return EmailRecord::find()->all();
+    }
+
+    public function saveEmail($model)
+    {
+        $record = new EmailRecord();
+        $record->email = $model->email;
+        $record->product_name = $model->product_name;
+        $record->download_file = $model->download_file;
+        $save = $record->save();
+        return $save;
     }
 }

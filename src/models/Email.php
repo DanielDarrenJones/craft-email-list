@@ -38,6 +38,8 @@ class Email extends Model
      * @var string
      */
     public $email = '';
+    public $product_name;
+    public $download_file = '';
 
     // Public Methods
     // =========================================================================
@@ -56,6 +58,8 @@ class Email extends Model
     {
         return [
             ['email', 'string'],
+            ['product_name', 'string'],
+            ['download_file', 'string']
         ];
     }
 }
