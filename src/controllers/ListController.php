@@ -17,8 +17,11 @@ use lukehopkins\emaillist\models\Email as EmailModel;
 
 class ListController extends Controller
 {
+    protected $allowAnonymous = true;
+
     public function actionIndex()
     {
+        $this->requireCpRequest();
         $data['emails'] = EmailList::$plugin->email->getEmails();
         return $this->renderTemplate('email-list/list', $data);
     }
