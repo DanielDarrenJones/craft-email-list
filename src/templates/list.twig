@@ -5,16 +5,16 @@
     <table id="menu-list" class="data fullwidth collapsible">
         <thead>
             <th scope="col">{{ "Email"|t('email-list') }}</th>
-            <th scope="col">{{ "Product"|t('email-list') }}</th>
-            <th scope="col">{{ "File Downloaded"|t('email-list') }}</th>
+            {# <th scope="col">{{ "Product"|t('email-list') }}</th> #}
+            {# <th scope="col">{{ "File Downloaded"|t('email-list') }}</th> #}
         </thead>
         <tbody>
         {% if emails is not empty %}
             {% for email in emails %}
                 <tr>
                     <td>{{ email.email }}</td>
-                    <td>{{ email.product_name }}</td>
-                    <td><a href="{{ email.download_file }}" target="_blank">{{ email.download_file }}</a></td>
+                    {# <td>{{ email.product_name }}</td>
+                    <td><a href="{{ email.download_file }}" target="_blank">{{ email.download_file }}</a></td> #}
                 </tr>
             {% endfor %}
         {% else %}
