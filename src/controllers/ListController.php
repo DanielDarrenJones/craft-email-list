@@ -37,4 +37,23 @@ class ListController extends Controller
         EmailList::$plugin->email->saveEmail($model);
         return $this->redirect(Craft::$app->request->getQueryParam('redirect'));
     }
+
+    public function actionExport()
+    {
+        $this->requireCpRequest();
+        $data['emails'] = EmailList::$plugin->email->getEmails();
+
+        header('Content-type: application/csv');
+        header('Content-Disposition: attachment; filename=emails.csv');
+        header("Content-Transfer-Encoding: UTF-8");
+
+        $f = fopen('php://output', 'a');
+
+        foreach ($data['emails'] as $email) {
+            fputcsv($f, [$email->email]);
+        }
+
+        fclose($f);
+        die();
+    }
 }

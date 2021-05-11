@@ -118,8 +118,8 @@ class EmailList extends Plugin
 
         Event::on(UrlManager::class, UrlManager::EVENT_REGISTER_CP_URL_RULES, function(RegisterUrlRulesEvent $event) {
             $event->rules['email-list/list'] = 'email-list/list/index';
+            $event->rules['email-list/export'] = 'email-list/list/export';
         });
-
 
 /**
  * Logging in Craft involves using one of the following methods:

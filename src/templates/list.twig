@@ -2,6 +2,7 @@
 {% set title = "Email List"|t('email-list') %}
 
 {% block content %}
+    <div style="margin-bottom: 16px;"><a href="{{ url('email-list/export') }}" style="background: white; border: 1px solid #d7d7d7; text-align: center; display: inline-block; padding: 0.4em 0.6em; cursor: pointer; text-decoration: none;">Export</a></div>
     <table id="menu-list" class="data fullwidth collapsible">
         <thead>
             <th scope="col">{{ "Email"|t('email-list') }}</th>

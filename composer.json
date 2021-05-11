@@ -2,7 +2,7 @@
     "name": "lukehopkins/email-list",
     "description": "A plugin for saving emails to a list",
     "type": "craft-plugin",
-    "version": "1.0.4",
+    "version": "1.0.5",
     "keywords": [
         "craft",
         "cms",
