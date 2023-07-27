@@ -2,7 +2,7 @@
     "name": "lukehopkins/email-list",
     "description": "A plugin for saving emails to a list",
     "type": "craft-plugin",
-    "version": "1.0.5",
+    "version": "2.0.0",
     "keywords": [
         "craft",
         "cms",
@@ -22,11 +22,11 @@
         }
     ],
     "require": {
-        "craftcms/cms": "^3.0.0"
+        "craftcms/cms": "^4.0.0"
     },
     "autoload": {
         "psr-4": {
-          "lukehopkins\\emaillist\\": "src/"
+            "lukehopkins\\emaillist\\": "src/"
         }
     },
     "extra": {
@@ -40,5 +40,16 @@
             "email": "lukehopkins\\emaillist\\services\\Email"
         },
         "class": "lukehopkins\\emaillist\\EmailList"
+    },
+    "config": {
+        "allow-plugins": {
+            "yiisoft/yii2-composer": true,
+            "craftcms/plugin-installer": true
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "require-dev": {
+        "craftcms/rector": "dev-main"
     }
 }
