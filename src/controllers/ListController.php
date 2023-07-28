@@ -17,7 +17,7 @@ use lukehopkins\emaillist\models\Email as EmailModel;
 
 class ListController extends Controller
 {
-    protected $allowAnonymous = true;
+    protected array|int|bool $allowAnonymous = true;
 
     public function actionIndex()
     {
