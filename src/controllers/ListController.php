@@ -30,12 +30,12 @@ class ListController extends Controller
     {
         $model = new EmailModel();
         $model->setAttributes([
-            'email' => Craft::$app->request->getQueryParam('email'),
-            'product_name' => Craft::$app->request->getQueryParam('product_name'),
-            'download_file' => Craft::$app->request->getQueryParam('redirect'),
+            'email' => Craft::$app->request->getParam('email'),
+            'product_name' => Craft::$app->request->getParam('product_name'),
+            'download_file' => Craft::$app->request->getParam('redirect'),
         ]);
         EmailList::$plugin->email->saveEmail($model);
-        return $this->redirect(Craft::$app->request->getQueryParam('redirect'));
+        return $this->redirect(Craft::$app->request->getParam('redirect'));
     }
 
     public function actionExport()
