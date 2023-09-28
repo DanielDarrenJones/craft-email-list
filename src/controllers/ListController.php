@@ -35,7 +35,7 @@ class ListController extends Controller
             'download_file' => Craft::$app->request->getParam('redirect'),
         ]);
         EmailList::$plugin->email->saveEmail($model);
-        return $this->redirect(Craft::$app->request->getParam('redirect'));
+        return $this->redirect(Craft::$app->request->getValidatedBodyParam('redirect'));
     }
 
     public function actionExport()
